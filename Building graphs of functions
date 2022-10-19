@@ -1,0 +1,36 @@
+import matplotlib.pyplot as plt
+from math import cos, sin, log, radians, exp
+
+def f_x(x):
+   y = exp(cos(radians(x))) + log(sin(0.8*radians(x))**2 + 1) * cos(radians(x))
+   return y
+
+def y_x(x):
+    y = -log((cos(radians(x))+sin(radians(x)))**2 + 1.7) + 2
+    return y
+
+a = -240
+b = 360
+n = 100
+h = (b-a)/(n-1)
+
+x_list = [a + h * i for i in range(n)]
+f_list = [f_x(x) for x in x_list]
+y_list = [y_x(x) for x in x_list]
+
+line_1 = plt.plot(x_list, f_list, label='f(x)')
+line_2 = plt.plot(x_list, y_list, label='y(x)')
+
+plt.setp(line_1, color="blue", linewidth=2)
+plt.setp(line_2, color="red", linewidth=2)
+
+plt.gca().spines["left"].set_position("center")
+plt.gca().spines["bottom"].set_position("center")
+plt.gca().spines["top"].set_visible(False)
+plt.gca().spines["right"].set_visible(False)
+
+plt.legend()
+
+plt.title("Графики функций")
+
+plt.show()
