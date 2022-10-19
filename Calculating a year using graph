@@ -1,0 +1,23 @@
+def population_in_year(t):
+  N = (172/45)*(math.pi/2 - math.atan((2000-t)/45))
+  return N
+
+a = int(input())
+b= int(input())
+year_list = [int(x) for x in range(a, b)]
+
+population_list = [population_in_year(t) for t in year_list]
+for i in population_list:
+  if i > 4.5:
+    break
+
+line = plt.plot(year_list, population_list) #x
+plt.setp(line, color="MediumOrchid", linewidth=2) #y
+
+plt.gca().spines["left"].set_position("center")
+plt.gca().spines["bottom"].set_position("center")
+
+plt.gca().spines["top"].set_visible(False)
+plt.gca().spines["right"].set_visible(False)
+
+plt.show()
